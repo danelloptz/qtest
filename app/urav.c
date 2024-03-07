@@ -20,8 +20,3 @@ double* urav(double a, double b, double c) {
     }
     return arr;
 }
-
-void printStdoutMessagesOther() {
-    printf("This is a test message from myfunc.c\n");
-    printf("Do not disturb\n");
-}

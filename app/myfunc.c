@@ -23,3 +23,8 @@ int fibonachi(int num) {
 
     return next;
 }
+
+void printStdoutMessages() {
+    printf("This is a test message from myfunc.c\n");
+    printf("Do not disturb\n");
+}

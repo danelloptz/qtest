@@ -3,8 +3,4 @@
 
 double* urav(double a, double b, double c);
 
-void printStdoutMessagesOther();
-
-extern int val1;
-
 #endif 
