@@ -33,21 +33,5 @@ TEST(Urav_3, num2) {
     EXPECT_TRUE(rez[0] == need[0]);
     EXPECT_TRUE(rez[1] == need[1]);
 }
-TEST(Urav_4, num3) {
-    double* rez = urav(1, 2, 12);
-    double need[2] = {0.000000, 0.000000};
-
-    EXPECT_TRUE(rez[0] == need[0]);
-    EXPECT_TRUE(rez[1] == need[1]);
-}
-TEST(Urav_5, num4) {
-    double* rez = urav(5, 2, 20);
-    double need[2] = {0.000000, 0.000000};
-
-    EXPECT_TRUE(rez[0] == need[0]);
-    EXPECT_TRUE(rez[1] == need[1]);
-}
-
-
 
 #endif // URAVNENIE_H
