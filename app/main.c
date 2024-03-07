@@ -9,8 +9,6 @@ int main() {
 
     double* rez;
     rez = urav(1, -5, 4);
-    
-    int count = myfunc(4);
 
     return 0;
 }

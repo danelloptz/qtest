@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include "myfunc.h"
 
-int myfunc(int b) {
-    return b + 4;
-}
-
 int val;
 
 int fibonachi(int num) {
