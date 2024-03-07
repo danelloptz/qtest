@@ -1,5 +1,8 @@
 *.q*
 *.gc*
 *.o*
+*.o
+*.q
+*.lt
 *.lt*
 Makefile
