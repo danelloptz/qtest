@@ -14,7 +14,7 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DINPUTDIR=\"/home/rezaboy/Desktop/Pleasure/ubuntu/orpo/gtest/tests/input/\"
+DEFINES       = -DINPUTDIR=\"/home/rezaboy/Desktop/Pleasure/qtest/tests/input/\"
 CFLAGS        = -pipe -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -O2 -D_REENTRANT -flto -fno-fat-lto-objects -Wall -Wextra -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -Wall -Wextra -fprofile-arcs -ftest-coverage -O2 -D_REENTRANT -flto -fno-fat-lto-objects -Wall -Wextra -fPIC $(DEFINES)
 INCPATH       = -I. -I../external/googletest/googletest -I../external/googletest/googletest/include -I../external/googletest/googlemock -I../external/googletest/googlemock/include -I../app -I/usr/lib/qt/mkspecs/linux-g++
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = tests1.0.0
-DISTDIR = /home/rezaboy/Desktop/Pleasure/ubuntu/orpo/gtest/tests/.tmp/tests1.0.0
+DISTDIR = /home/rezaboy/Desktop/Pleasure/qtest/tests/.tmp/tests1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -pipe -Wall -Wextra -fprofile-arcs -ftest-coverage -O2 -D_REENTRANT -flto=16 -fno-fat-lto-objects -fuse-linker-plugin -fPIC
 LIBS          = $(SUBLIBS) -lgcov -lpthread   
