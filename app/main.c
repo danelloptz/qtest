@@ -7,9 +7,10 @@
 int main() {
     printf("Hello World!\n");
 
-    // double* rez;
-    // rez = urav(1, -5, 4);
-    // printf("%f %f \n", rez[0], rez[1]);
+    double* rez;
+    rez = urav(1, -5, 4);
+    
+    int count = myfunc(4);
 
     return 0;
 }
