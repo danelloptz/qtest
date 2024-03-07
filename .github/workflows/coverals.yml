@@ -1,0 +1,34 @@
+on: ["push", "pull_request"]
+
+name: Test Coveralls
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install Qt
+      run: |
+        sudo apt-get update
+        sudo apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+    - name: QMAKE init
+      run: qmake
+
+    - name: MAKE start
+      run: make
+
+    - name: Run tests
+      run: ./tests/tests
+
+    - uses: actions/checkout@v1
+
+    - name: npm install, make test-coverage
+      run: |
+        npm install
+        make test-coverage
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
