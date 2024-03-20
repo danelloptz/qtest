@@ -12,39 +12,51 @@ extern "C" {
 #include "urav.h"
 }
 
-TEST(Urav, num0) {
-    double* rez = urav(1, -5, 4);
-    double need[2] = {4.000000, 1.000000};
-
-    EXPECT_TRUE(rez[0] == need[0]);
-    EXPECT_TRUE(rez[1] == need[1]);
+TEST(Urav, basic) {
+    ASSERT_STREQ(urav(1, -5, 4), "4.00 : 1.00");
+    ASSERT_STREQ(urav(1, -3, 2), "2.00 : 1.00");
+    ASSERT_STREQ(urav(1, -13, 12), "12.00 : 1.00");
 }
-TEST(Urav, num1) {
-    double* rez = urav(1, -3, 2);
-    double need[2] = {2.000000, 1.000000};
-
-    EXPECT_TRUE(rez[0] == need[0]);
-    EXPECT_TRUE(rez[1] == need[1]);
+TEST(Urav, norez) {
+    ASSERT_STRCASEEQ(urav(1,3,12), "Корней нет");   
+    ASSERT_STRCASEEQ(urav(0,0,1), "Нет корней");
 }
-TEST(Urav, num2) {
-    double* rez = urav(1, -13, 12);
-    double need[2] = {12.000000, 1.000000};
-
-    EXPECT_TRUE(rez[0] == need[0]);
-    EXPECT_TRUE(rez[1] == need[1]);
+TEST(Urav, onerez) {
+    ASSERT_STREQ(urav(1,2,1), "-1.00");
+    ASSERT_STRCASEEQ(urav(0,1,0), "0");
+    ASSERT_STRCASEEQ(urav(1,0,0), "0");
+    ASSERT_STRCASEEQ(urav(0,1,2), "-2.00");
 }
-TEST(Urav, num3) {
-    double* rez = urav(1, 3, 12);
-    double need[2] = {1.000000, 1.000000};
 
-    EXPECT_TRUE(rez[0] == need[0]);
-    EXPECT_TRUE(rez[1] == need[1]);
+TEST(Urav, other) {
+    ASSERT_STRCASEEQ(urav(0,0,0), "Любой x");
+    ASSERT_STRCASEEQ(urav(1,0,4), "2.00 : -2.00");
 }
-TEST(Urav, num4) {
-    double* rez = urav(1, 2, 1);
-    double need[1] = {-1.000000};
 
-    EXPECT_TRUE(rez[0] == need[0]);
+TEST(RootsTest, inputFile) {
+    char *file = (char *)malloc(sizeof(char) * 1024);
+    sprintf(file, "%s/input.txt", INPUTDIR);
+
+    int input = open(file, O_RDONLY);
+    free(file);
+    if (input < 0) {
+        ASSERT_EQ(errno, 0);
+    }
+
+    char *buffer = (char *)malloc(sizeof(char) * 512);
+    int symb = read(input, buffer, 512);
+    ASSERT_TRUE(symb > 0);
+    close(input);
+
+    int a = 0;
+    int b =0;
+    int c = 0;
+    char output[20];
+    int rez = sscanf(buffer, "%d %d %d %s", &a, &b, &c, output);
+    free(buffer);
+
+    ASSERT_EQ(rez, 4);
+    ASSERT_STRCASEEQ(urav(a,b,c), output);
 }
 
 #endif // URAVNENIE_H
