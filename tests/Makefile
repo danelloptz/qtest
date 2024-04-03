@@ -14,7 +14,7 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DINPUTDIR=\"/home/rezaboy/Desktop/Pleasure/qtest/tests/input/\"
+DEFINES       = -DINPUTDIR=\"/home/rezaboy/Desktop/qtest/tests/input/\"
 CFLAGS        = -pipe -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -O2 -D_REENTRANT -flto -fno-fat-lto-objects -Wall -Wextra -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -Wall -Wextra -fprofile-arcs -ftest-coverage -O2 -D_REENTRANT -flto -fno-fat-lto-objects -Wall -Wextra -fPIC $(DEFINES)
 INCPATH       = -I. -I../external/googletest/googletest -I../external/googletest/googletest/include -I../external/googletest/googlemock -I../external/googletest/googlemock/include -I../app -I/usr/lib/qt/mkspecs/linux-g++
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = tests1.0.0
-DISTDIR = /home/rezaboy/Desktop/Pleasure/qtest/tests/.tmp/tests1.0.0
+DISTDIR = /home/rezaboy/Desktop/qtest/tests/.tmp/tests1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -pipe -Wall -Wextra -fprofile-arcs -ftest-coverage -O2 -D_REENTRANT -flto=16 -fno-fat-lto-objects -fuse-linker-plugin -fPIC
 LIBS          = $(SUBLIBS) -lgcov -lpthread   
@@ -56,12 +56,12 @@ SOURCES       = ../external/googletest/googletest/src/gtest-all.cc \
 		../external/googletest/googlemock/src/gmock-all.cc \
 		main.cpp \
 		../app/myfunc.c \
-		../app/urav.c 
+		../app/roots.c 
 OBJECTS       = gtest-all.o \
 		gmock-all.o \
 		main.o \
 		myfunc.o \
-		urav.o
+		roots.o
 DIST          = input/TestSTDOut_output.txt \
 		/usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -285,14 +285,14 @@ DIST          = input/TestSTDOut_output.txt \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		tests.pro tst_test1.h \
 		../app/myfunc.h \
-		../app/urav.h \
+		../app/roots.h \
 		fibonachi_test.h \
-		urav_test.h \
+		roots_test.h \
 		tst_stdout.h ../external/googletest/googletest/src/gtest-all.cc \
 		../external/googletest/googlemock/src/gmock-all.cc \
 		main.cpp \
 		../app/myfunc.c \
-		../app/urav.c
+		../app/roots.c
 QMAKE_TARGET  = tests
 DESTDIR       = 
 TARGET        = tests
@@ -869,7 +869,7 @@ gmock-all.o: ../external/googletest/googlemock/src/gmock-all.cc ../external/goog
 		../external/googletest/googlemock/src/gmock.cc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gmock-all.o ../external/googletest/googlemock/src/gmock-all.cc
 
-main.o: main.cpp urav_test.h \
+main.o: main.cpp roots_test.h \
 		../external/googletest/googletest/include/gtest/gtest.h \
 		../external/googletest/googletest/include/gtest/internal/gtest-internal.h \
 		../external/googletest/googletest/include/gtest/internal/gtest-port.h \
@@ -898,7 +898,7 @@ main.o: main.cpp urav_test.h \
 		../external/googletest/googlemock/include/gmock/internal/gmock-port.h \
 		../external/googletest/googlemock/include/gmock/internal/custom/gmock-port.h \
 		../external/googletest/googlemock/include/gmock/internal/custom/gmock-matchers.h \
-		../app/urav.h \
+		../app/roots.h \
 		tst_test1.h \
 		../app/myfunc.h \
 		fibonachi_test.h \
@@ -908,8 +908,8 @@ main.o: main.cpp urav_test.h \
 myfunc.o: ../app/myfunc.c ../app/myfunc.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o myfunc.o ../app/myfunc.c
 
-urav.o: ../app/urav.c ../app/urav.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o urav.o ../app/urav.c
+roots.o: ../app/roots.c ../app/roots.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o roots.o ../app/roots.c
 
 ####### Install
 
