@@ -5,11 +5,11 @@ CONFIG -= qt
 
 SOURCES += main.c \
     myfunc.c \
-    urav.c
+    roots.c
 
 HEADERS += \
     myfunc.h \
-    urav.h
+    roots.h
 
 QMAKE_CFLAGS += -Wall -Wextra
 

@@ -2,13 +2,11 @@
 #include <stdlib.h>
 
 #include "myfunc.h"
-#include "urav.h"
+#include "roots.h"
 
 int main() {
-    printf("Hello World!\n");
-
-    double* rez;
-    rez = urav(1, -5, 4);
+    
+    printf("%s", roots(1, -5, 4));
 
     return 0;
 }
