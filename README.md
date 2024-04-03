@@ -1,5 +1,6 @@
 # qtest
 Работай, пожалуйста...
+PLS
 
 [![Coverage Status](https://coveralls.io/repos/github/danelloptz/qtest/badge.png?branch=main)](https://coveralls.io/github/danelloptz/qtest?branch=main)
 ![example workflow](https://github.com/danelloptz/qtest/actions/workflows/makefile.yml/badge.svg)
