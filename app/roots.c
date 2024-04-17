@@ -5,31 +5,32 @@
 
 char rezult[50];
 
-char* roots(int a, int b, int c) {
-    double x1, x2, d;
+int roots(int a, int b, int c, double *r) {
+    double d;
+    // printf("%f %f\n", r[0], r[1]);
+    r[0] = 0;
+    r[1] = 0;
 
     if (a == 0) {
         if (b == 0) {
             if (c == 0) {
-                return "Любой x";
+                return -1; // любой корень
             } else {
-                return "Нет корней";
+                return 0; // нет корней
             }
         } else if (c == 0) {
-            return "0";
+            return 1; // один корень
         } else {
-            x1 = -c / b;
-            sprintf(rezult, "%.2lf", x1);
-            return rezult;
+            r[0] = -c / b;
+            return 1; // один корень
         }
     }
     else if (b == 0) {
         if (c == 0) {
-            return "0";
+            return 1; // один корень
         } else {
-            x1 = sqrt(abs(-c / a));
-            sprintf(rezult, "%.2lf : %.2lf", x1, -x1);
-            return rezult;
+            r[0] = sqrt(abs(-c / a));
+            return 1; // один корень
         }
     }
 
@@ -37,19 +38,17 @@ char* roots(int a, int b, int c) {
 
 
     if (d > 0) {
-        x1 = (-b + sqrt(d)) / (2 * a);
-        x2 = (-b - sqrt(d)) / (2 * a);
-        sprintf(rezult, "%.2lf : %.2lf", x1, x2);
-        return rezult;
+        r[0] = (-b + sqrt(d)) / (2 * a);
+        r[1] = (-b - sqrt(d)) / (2 * a);
+        return 2; // 2 корня
     }
 
     else if (d == 0) {
-        x1 = -b / (2 * a);
-        sprintf(rezult, "%.2lf", x1);
-        return rezult;
+        r[0] = -b / (2 * a);
+        return 1; // 1 корень
     }
     else {
-        return "Корней нет";
+        return 0; // нет корней
     }
 }
 

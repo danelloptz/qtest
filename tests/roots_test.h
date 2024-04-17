@@ -11,26 +11,51 @@
 extern "C" {
 #include "roots.h"
 }
+double *r = (double *) malloc(sizeof(double) * 2);
+int status;
 
-TEST(Roots, basic) {
-    ASSERT_STREQ(roots(1, -5, 4), "4.00 : 1.00");
-    ASSERT_STREQ(roots(1, -3, 2), "2.00 : 1.00");
-    ASSERT_STREQ(roots(1, -13, 12), "12.00 : 1.00");
-}
-TEST(Roots, norezult) {
-    ASSERT_STREQ(roots(1,3,12), "Корней нет");   
-    ASSERT_STREQ(roots(0,0,1), "Нет корней");
-}
-TEST(Roots, onerezult) {
-    ASSERT_STREQ(roots(1,2,1), "-1.00");
-    ASSERT_STREQ(roots(0,1,0), "0");
-    ASSERT_STREQ(roots(1,0,0), "0");
-    ASSERT_STREQ(roots(0,1,2), "-2.00");
+TEST(Roots, BASIC) {
+    status = roots(1, -5, 4, r);
+
+    ASSERT_EQ(status, 2);
+    ASSERT_EQ(r[0], 4);
+    ASSERT_EQ(r[1], 1);
+
+    status = roots(1, -3, 2, r);
+    ASSERT_EQ(r[0], 2);
+    ASSERT_EQ(r[1], 1);
+
 }
 
-TEST(Roots, other) {
-    ASSERT_STREQ(roots(0,0,0), "Любой x");
-    ASSERT_STREQ(roots(1,0,4), "2.00 : -2.00");
+TEST(Roots, NOREZULT) {
+    status = roots(1, 3, 12, r);
+    ASSERT_EQ(status, 0);  
+
+    status = roots(0, 0, 1, r);
+    ASSERT_EQ(status, 0);
+}
+
+TEST(Roots, ONEREZULT) {
+    status = roots(1, 2, 1, r);
+    ASSERT_EQ(status, 1); 
+    ASSERT_EQ(r[0], -1);
+
+    status = roots(0, 1, 0, r);
+    ASSERT_EQ(status, 1); 
+    ASSERT_EQ(r[0], 0);
+
+    status = roots(1, 0, 0, r);
+    ASSERT_EQ(status, 1); 
+    ASSERT_EQ(r[0], 0);
+
+    status = roots(0, 1, 2, r);
+    ASSERT_EQ(status, 1); 
+    ASSERT_EQ(r[0], -2);
+}
+
+TEST(Roots, ANY) {
+    status = roots(0, 0, 0, r);
+    ASSERT_EQ(status, -1); 
 }
 
 TEST(RootsTest, inputFile) {
@@ -51,12 +76,17 @@ TEST(RootsTest, inputFile) {
     int a = 0;
     int b =0;
     int c = 0;
-    char output[20];
-    int rezult = sscanf(buffer, "%d %d %d %s", &a, &b, &c, output);
+    int output;
+    int rezult = sscanf(buffer, "%d %d %d %d", &a, &b, &c, &output);
+    printf("%d \n", output);
     free(buffer);
 
     ASSERT_EQ(rezult, 4);
-    ASSERT_STREQ(roots(a,b,c), output);
+
+    status = roots(a, b, c, r);
+    ASSERT_EQ(status, 1); 
+    ASSERT_EQ(r[0], output);
+
 }
 
 #endif // URAVNENIE_H
