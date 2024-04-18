@@ -4,9 +4,12 @@ PLS
 
 [![Coverage Status](https://coveralls.io/repos/github/danelloptz/qtest/badge.png?branch=main)](https://coveralls.io/github/danelloptz/qtest?branch=main)
 ![example workflow](https://github.com/danelloptz/qtest/actions/workflows/makefile.yml/badge.svg)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=reza-team_tasks&metric=bugs)](https://sonarcloud.io/summary/new_code?id=reza-team_tasks)        
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=reza-team_tasks&metric=bugs)](https://sonarcloud.io/summary/new_code?id=reza-team_tasks)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=reza-team_tasks&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=reza-team_tasks)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=reza-team_tasks&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=reza-team_tasks)            
 
-Перечень тестов:       
+# Перечень тестов:       
+          
 ## Тест №1.1 BASIC (позитивный)       
 Цель: проверка корректности вычисления корней квадратного уравнения для различных входных данных.         
 Входные данные: a = 1, b = -5, c = 4; a = 1, b = -3, c = 2.          
